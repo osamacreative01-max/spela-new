@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SEPELA — Taste the Untamed | Cocktail Cans</title>
+  <meta name="description" content="SEPELA premium cocktail cans — Pink Gin &amp; Tonic, Rum &amp; Ginger and Lime, and Whisky &amp; Cola. 250 ml, 7% ABV, crafted in Poland. 18+ drink responsibly.">
+  <meta name="theme-color" content="#FBF1E0">
+  <meta name="color-scheme" content="light">
+
+  <!-- Icons -->
+  <link rel="icon" href="assets/icon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icon-180.png">
+
+  <!-- Social sharing — replace the relative image URL with your live domain before launch -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SEPELA">
+  <meta property="og:title" content="SEPELA — Taste the Untamed">
+  <meta property="og:description" content="Three bold flavours. One sleek can. Pink Gin &amp; Tonic, Rum &amp; Ginger and Lime, and Whisky &amp; Cola. 250 ml, 7% ABV.">
+  <meta property="og:image" content="assets/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SEPELA — Taste the Untamed">
+  <meta name="twitter:description" content="Three bold flavours. One sleek can. Crafted in Poland. 250 ml, 7% ABV.">
+  <meta name="twitter:image" content="assets/og-cover.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,800;0,900;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <noscript>
+    <style>
+      .preloader{display:none!important}
+      body.is-loading{overflow:auto!important}
+      .reveal{opacity:1!important;transform:none!important}
+      .split .w>i{transform:none!important}
+    </style>
+  </noscript>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "SEPELA cocktail cans",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Product",
+          "name": "Pink Gin & Tonic",
+          "description": "Crisp gin, a blush of pink and a clean tonic finish. 250 ml, 7% ABV.",
+          "image": "assets/can-pinkgin.webp",
+          "brand": { "@type": "Brand", "name": "SEPELA" },
+          "offers": { "@type": "Offer", "priceCurrency": "PKR", "price": "450", "availability": "https://schema.org/InStock" }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Product",
+          "name": "Rum & Ginger and Lime",
+          "description": "Smooth rum with a spicy ginger bite and fresh lime. 250 ml, 7% ABV.",
+          "image": "assets/can-rum.webp",
+          "brand": { "@type": "Brand", "name": "SEPELA" },
+          "offers": { "@type": "Offer", "priceCurrency": "PKR", "price": "450", "availability": "https://schema.org/InStock" }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "Product",
+          "name": "Whisky & Cola",
+          "description": "A classic pour: mellow whisky over cola, ready to drink. 250 ml, 7% ABV.",
+          "image": "assets/can-whisky.webp",
+          "brand": { "@type": "Brand", "name": "SEPELA" },
+          "offers": { "@type": "Offer", "priceCurrency": "PKR", "price": "450", "availability": "https://schema.org/InStock" }
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="is-loading">
+
+  <a class="skip-link" href="#top">Skip to content</a>
+
+  <!-- ======================= AGE GATE (18+) ======================= -->
+  <div class="gate" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="gateTitle" aria-describedby="gateDesc" hidden>
+    <div class="gate__box">
+      <img class="gate__logo" src="assets/logo-sepela.png" alt="SEPELA" width="1079" height="217">
+      <h2 id="gateTitle">Are you 18 or older?</h2>
+      <p id="gateDesc">SEPELA contains alcohol. You must be of legal drinking age in your country to enter this site.</p>
+      <div class="gate__actions">
+        <button class="btn btn--ink" type="button" id="gateYes">Yes, I&rsquo;m 18+</button>
+        <a class="btn btn--ghost" href="https://www.google.com/">No, take me back</a>
+      </div>
+      <p class="gate__fine">Drink responsibly</p>
+    </div>
+  </div>
+
+  <!-- ======================= PRELOADER ======================= -->
+  <div class="preloader" id="preloader">
+    <img class="preloader__logo" src="assets/logo-sepela.png" alt="SEPELA" width="1079" height="217">
+    <div class="preloader__track"><span class="preloader__bar" id="loadBar"></span></div>
+    <div class="preloader__pct" id="loadPct">0%</div>
+  </div>
+
+  <!-- ======================= HEADER ======================= -->
+  <header class="header" id="header">
+    <nav class="header__side" aria-label="Primary">
+      <a class="pill pill--link" href="#flavours">Flavours</a>
+      <a class="pill pill--link" href="#craft">The Pour</a>
+    </nav>
+    <a class="header__logo" href="#top" aria-label="SEPELA home">
+      <img src="assets/logo-sepela.png" alt="SEPELA" width="1079" height="217">
+    </a>
+    <nav class="header__side header__side--r" aria-label="Secondary">
+      <a class="pill pill--link" href="#story">Story</a>
+      <a class="pill pill--cta" href="#find">Find SEPELA</a>
+    </nav>
+    <button class="burger" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Mobile menu (shown by JS on small screens) -->
+  <div class="mobile-nav" id="mobileNav">
+    <nav class="mobile-nav__panel" aria-label="Mobile">
+      <a href="#flavours">Flavours</a>
+      <a href="#craft">The Pour</a>
+      <a href="#story">Story</a>
+      <a href="#find">Find SEPELA</a>
+      <p class="mobile-nav__note">250 ml &middot; 7% ABV &middot; 18+ &middot; Drink responsibly</p>
+    </nav>
+  </div>
+
+  <!-- ======================= 3D CAN STAGE ======================= -->
+  <div class="stage" id="stage" aria-hidden="true"></div>
+
+  <main id="top" tabindex="-1">
+
+    <!-- ======================= HERO ======================= -->
+    <section class="hero" id="hero">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <p class="hero__eyebrow reveal">Polish&#8209;crafted &middot; 250&nbsp;ml &middot; 7% ABV</p>
+          <h1 class="hero__title split">Taste the Untamed</h1>
+          <p class="hero__sub reveal">Cocktail cans, perfected.</p>
+          <p class="hero__body reveal">Three bold flavours. One sleek can. Spirit, fizz and fire &mdash; poured ice&#8209;cold and gone fast.</p>
+          <div class="hero__actions reveal">
+            <a class="btn btn--ink" href="#flavours">Explore flavours</a>
+            <a class="btn btn--ghost" href="#craft">Our craft</a>
+          </div>
+        </div>
+        <div class="hero__pad" aria-hidden="true"></div>
+      </div>
+
+      <div class="hero__second">
+        <h2 class="hero__second-title split">Try all three flavours</h2>
+        <p class="hero__second-body reveal">Pink Gin &amp; Tonic, Rum &amp; Ginger and Lime, and Whisky &amp; Cola &mdash; crafted for nights that refuse to end.</p>
+      </div>
+
+      <div class="hero__badge spin-badge" aria-hidden="true">
+        <svg viewBox="0 0 120 120">
+          <defs><path id="circPath1" d="M60,60 m-45,0 a45,45 0 1,1 90,0 a45,45 0 1,1 -90,0"></path></defs>
+          <circle cx="60" cy="60" r="58" class="badge__disc"></circle>
+          <g class="badge__spin">
+            <text class="badge__text"><textPath href="#circPath1" startOffset="0">SEPELA &#183; 250 ML &#183; SERVE ICE COLD &#183; </textPath></text>
+          </g>
+          <text x="60" y="68" text-anchor="middle" class="badge__star">&#10022;</text>
+        </svg>
+      </div>
+
+      <a class="hero__scroll" href="#dive" aria-label="Scroll to the flavours">
+        <span>Scroll</span>
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 4v14m0 0l-6-6m6 6l6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </section>
+
+    <!-- ======================= DIVE / 3D SCROLL ======================= -->
+    <section class="dive" id="dive" aria-label="Three flavours showcase">
+      <div class="dive__sticky">
+        <p class="dive__line split">Go wild with</p>
+        <div class="dive__spacer" aria-hidden="true"></div>
+        <div class="dive__bottom">
+          <p class="dive__word" id="diveWord">Pink Gin</p>
+          <div class="dive__chips" id="diveChips" aria-hidden="true">
+            <span class="is-on"></span><span></span><span></span>
+          </div>
+        </div>
+        <p class="dive__hint">keep scrolling &mdash; the can turns with you</p>
+      </div>
+    </section>
+
+    <!-- ======================= FLAVOUR CAROUSEL ======================= -->
+    <section class="flavours" id="flavours">
+      <div class="flavours__head">
+        <h2 class="section-title split">Choose your flavour</h2>
+        <p class="section-sub reveal">250&nbsp;ml can &middot; 3 flavours &middot; <em>drag or swipe to explore</em></p>
+      </div>
+
+      <div class="rail" id="rail" tabindex="0" role="region" aria-label="Flavour carousel — drag, swipe or use the arrow keys">
+        <article class="card reveal" style="--d:.05s">
+          <div class="card__img" style="--tint:#F6C3CF">
+            <img src="assets/can-pinkgin.webp" alt="SEPELA Pink Gin &amp; Tonic can" width="1040" height="2800" loading="lazy" decoding="async" draggable="false">
+          </div>
+          <div class="card__meta">
+            <h3>Pink Gin &amp; Tonic</h3>
+            <span class="card__chips">
+              <span class="chip chip--rose">7% Vol.</span>
+              <span class="chip chip--price">Rs 450</span>
+            </span>
+          </div>
+          <p>Crisp gin, a blush of pink and a clean tonic finish. Cold, light and easy to finish.</p>
+          <span class="card__num" aria-hidden="true">01</span>
+        </article>
+
+        <article class="card reveal" style="--d:.15s">
+          <div class="card__img" style="--tint:#DDE7B4">
+            <img src="assets/can-rum.webp" alt="SEPELA Rum &amp; Ginger and Lime can" width="1040" height="2800" loading="lazy" decoding="async" draggable="false">
+          </div>
+          <div class="card__meta">
+            <h3>Rum &amp; Ginger and Lime</h3>
+            <span class="card__chips">
+              <span class="chip chip--lime">7% Vol.</span>
+              <span class="chip chip--price">Rs 450</span>
+            </span>
+          </div>
+          <p>Smooth rum with a spicy ginger bite and fresh lime. Bright, warm and sharp.</p>
+          <span class="card__num" aria-hidden="true">02</span>
+        </article>
+
+        <article class="card reveal" style="--d:.25s">
+          <div class="card__img" style="--tint:#EFD8AC">
+            <img src="assets/can-whisky.webp" alt="SEPELA Whisky &amp; Cola can" width="1040" height="2800" loading="lazy" decoding="async" draggable="false">
+          </div>
+          <div class="card__meta">
+            <h3>Whisky &amp; Cola</h3>
+            <span class="card__chips">
+              <span class="chip chip--gold">7% Vol.</span>
+              <span class="chip chip--price">Rs 450</span>
+            </span>
+          </div>
+          <p>A classic pour: mellow whisky over cola, ready to drink straight from the can.</p>
+          <span class="card__num" aria-hidden="true">03</span>
+        </article>
+      </div>
+      <p class="rail__hint reveal" aria-hidden="true">drag &rarr;</p>
+    </section>
+
+    <!-- ======================= ALTERNATING CRAFT ======================= -->
+    <section class="craft" id="craft">
+      <div class="craft__row">
+        <div class="craft__media" data-par style="--tint:#EFD8AC">
+          <span class="craft__num" aria-hidden="true">01</span>
+          <img src="assets/can-whisky.webp" alt="SEPELA Whisky &amp; Cola can" width="1040" height="2800" loading="lazy" decoding="async" draggable="false">
+          <span class="craft__sticker">Made in Poland</span>
+        </div>
+        <div class="craft__text">
+          <h2 class="craft__title split">Crafted in Poland</h2>
+          <p class="reveal">Produced in Poland for <strong>JVA Trading</strong> &mdash; European craft sealed into a sleek aluminium can.</p>
+        </div>
+      </div>
+
+      <div class="craft__row craft__row--rev">
+        <div class="craft__media" data-par style="--tint:#DDE7B4">
+          <span class="craft__num" aria-hidden="true">02</span>
+          <img src="assets/can-rum.webp" alt="SEPELA Rum &amp; Ginger and Lime can" width="1040" height="2800" loading="lazy" decoding="async" draggable="false">
+          <span class="craft__sticker craft__sticker--pink">250 ml</span>
+        </div>
+        <div class="craft__text">
+          <h2 class="craft__title split">Light can, loud flavour</h2>
+          <p class="reveal"><strong>250&nbsp;ml of ice-cold courage</strong> &mdash; real ginger bite, real lime brightness, real cola depth.</p>
+        </div>
+      </div>
+
+      <div class="craft__row">
+        <div class="craft__media" data-par style="--tint:#F6C3CF">
+          <span class="craft__num" aria-hidden="true">03</span>
+          <img src="assets/can-pinkgin.webp" alt="SEPELA Pink Gin &amp; Tonic can" width="1040" height="2800" loading="lazy" decoding="async" draggable="false">
+          <span class="craft__sticker craft__sticker--rose">18+</span>
+        </div>
+        <div class="craft__text">
+          <h2 class="craft__title split">Pour it over ice</h2>
+          <p class="reveal"><strong>Serve at 4&ndash;6&deg;C</strong>, crack the tab, let the fizz do the talking. Best enjoyed with good music and better company.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= MARQUEE ======================= -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>SEPELA &#10022; Unleash the untamed &#10022; 250 ml &#10022; Serve ice cold &#10022; 18+ &#10022;&nbsp;</span>
+        <span>SEPELA &#10022; Unleash the untamed &#10022; 250 ml &#10022; Serve ice cold &#10022; 18+ &#10022;&nbsp;</span>
+        <span>SEPELA &#10022; Unleash the untamed &#10022; 250 ml &#10022; Serve ice cold &#10022; 18+ &#10022;&nbsp;</span>
+      </div>
+    </div>
+
+    <!-- ======================= BIG TEXT ======================= -->
+    <section class="bigtext" id="story">
+      <div class="bigtext__inner">
+        <div class="bt-l1 reveal">Drink</div>
+        <div class="bt-row">
+          <span class="bt-r1 reveal" style="--d:.1s">that</span>
+          <span class="bt-r2 reveal" style="--d:.2s">makes</span>
+        </div>
+        <div class="bt-l2 reveal" style="--d:.3s">You Bold</div>
+      </div>
+    </section>
+
+    <!-- ======================= FOOTER ======================= -->
+    <footer class="footer" id="contact">
+      <div class="footer__top">
+        <div class="footer__logo">
+          <img src="assets/logo-sepela-light.png" alt="SEPELA" width="1079" height="217">
+        </div>
+        <div class="footer__badge spin-badge" aria-hidden="true">
+          <svg viewBox="0 0 120 120">
+            <defs><path id="circPath2" d="M60,60 m-45,0 a45,45 0 1,1 90,0 a45,45 0 1,1 -90,0"></path></defs>
+            <circle cx="60" cy="60" r="58" class="badge__disc badge__disc--gold"></circle>
+            <g class="badge__spin">
+              <text class="badge__text badge__text--ink"><textPath href="#circPath2" startOffset="0">DRINK RESPONSIBLY &#183; 18+ &#183; SEPELA &#183; </textPath></text>
+            </g>
+            <text x="60" y="67" text-anchor="middle" class="badge__num">18+</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Add your stockist list / trade contact details here -->
+      <div class="footer__find" id="find">
+        <h2 class="footer__find-title">Find SEPELA</h2>
+        <p>SEPELA is poured in leading bars and stocked by independent bottle shops. Ask for it by name &mdash; or talk to <strong>JVA Trading</strong> about stocking the range.</p>
+      </div>
+
+      <nav class="footer__links" aria-label="Footer">
+        <a href="#flavours">Flavours</a>
+        <a href="#craft">The Pour</a>
+        <a href="#story">Story</a>
+        <a href="https://www.drinkaware.co.uk/" target="_blank" rel="noopener noreferrer">Drink aware</a>
+        <a href="#top">Back to top</a>
+      </nav>
+
+      <p class="footer__credit">Produced in Poland for JVA Trading Inc. / JVA Trading s.a.r.l. / JVA Trading UK Ltd. &middot; SEPELA cocktail cans &middot; 250&nbsp;ml</p>
+      <p class="footer__fine">&copy; 2026 SEPELA &middot; Drink responsibly &middot; Not for sale to anyone under 18</p>
+    </footer>
+
+  </main>
+
+  <script src="js/vendor/three.min.js"></script>
+  <script src="js/vendor/RoomEnvironment.js"></script>
+  <script src="js/textures.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

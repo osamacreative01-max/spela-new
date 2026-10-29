@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Development helper - not part of the published site
+Disallow: /_gencan.html
