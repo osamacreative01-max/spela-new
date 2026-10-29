@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>SEPELA can PNG generator</title>
+<style>
+  html,body{margin:0;background:transparent;overflow:hidden}
+  canvas{display:block}
+</style>
+</head>
+<body>
+<!--
+  One-time dev tool: renders each flavour's 3D can on a TRANSPARENT frame
+  and saves it as assets/can-*.png (used by flavour cards + craft rows).
+  Run via puppeteer (shotkit/gencan.js):  ?f=0|1|2&ry=15&w=700&h=1400
+  Materials/lights/geometry are identical to js/main.js so the PNGs match
+  the live hero can exactly.
+-->
+<script src="js/vendor/three.min.js"></script>
+<script src="js/vendor/RoomEnvironment.js"></script>
+<script src="js/textures.js"></script>
+<script>
+(function () {
+window.__READY = false;
+var Q = new URLSearchParams(location.search);
+var F = [
+  { label: 'assets/tex/label-pinkgin.jpg', faceU: 0.499 },
+  { label: 'assets/tex/label-rum.jpg',     faceU: 0.506 },
+  { label: 'assets/tex/label-whisky.jpg',  faceU: 0.509 }
+];
+var i = parseInt(Q.get('f') || '0', 10);
+var W = parseInt(Q.get('w') || '520', 10);
+var H = parseInt(Q.get('h') || '1400', 10);
+var DEG = Math.PI / 180, FOV = 35, CAMZ = 9, BODY = 2.3, CAN_H = 2.59;
+
+var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, premultipliedAlpha: false });
+renderer.setPixelRatio(2);
+renderer.setSize(W, H, false);
+renderer.setClearColor(0x000000, 0);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+if ('outputColorSpace' in renderer && THREE.SRGBColorSpace) renderer.outputColorSpace = THREE.SRGBColorSpace;
+else renderer.outputEncoding = THREE.sRGBEncoding;
+document.body.appendChild(renderer.domElement);
+renderer.domElement.style.width = W + 'px';
+renderer.domElement.style.height = H + 'px';
+
+var scene = new THREE.Scene();
+var pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new THREE.RoomEnvironment(), 0.04).texture;
+if ('environmentIntensity' in scene) scene.environmentIntensity = 0.9;
+var key = new THREE.DirectionalLight(0xffffff, 2.2); key.position.set(3, 4, 5); scene.add(key);
+var rim = new THREE.DirectionalLight(0xffffff, 1.2); rim.position.set(-4, 2, -3); scene.add(rim);
+scene.add(new THREE.AmbientLight(0xffffff, 0.45));
+
+var camera = new THREE.PerspectiveCamera(FOV, W / H, 0.1, 50);
+camera.position.set(0, 0, CAMZ);
+
+var worldH = 2 * Math.tan(FOV * DEG / 2) * CAMZ;
+var root = new THREE.Group();
+root.scale.setScalar((0.665 * worldH) / CAN_H);      /* can = ~77% of frame height (perspective margin included) */
+scene.add(root);
+var spin = new THREE.Group();
+spin.rotation.x = 0.12;                              /* same tilt as the live can */
+spin.rotation.y = parseFloat(Q.get('ry') || '15') * DEG;
+root.add(spin);
+
+function lathe(pts, mat) {
+  return new THREE.Mesh(
+    new THREE.LatheGeometry(pts.map(function (p) { return new THREE.Vector2(p[0], p[1]); }), 64), mat);
+}
+var silver = new THREE.MeshStandardMaterial({ color: 0xd4d7dc, metalness: 1, roughness: 0.22, side: THREE.DoubleSide });
+var dark   = new THREE.MeshStandardMaterial({ color: 0x9a9da5, metalness: 1, roughness: 0.38, side: THREE.DoubleSide });
+var t = BODY / 2;
+var top = lathe([[0, 0.17], [0.38, 0.17], [0.4, 0.2], [0.43, 0.2], [0.44, 0.17], [0.43, 0.12], [0.46, 0.07], [0.49, 0.025], [0.5, 0]], silver);
+top.position.y = t; spin.add(top);
+var bottom = lathe([[0.5, 0], [0.49, -0.03], [0.45, -0.08], [0.41, -0.11], [0.36, -0.09], [0.3, -0.12], [0, -0.12]], dark);
+bottom.position.y = -t; spin.add(bottom);
+var core = new THREE.Mesh(
+  new THREE.CylinderGeometry(0.486, 0.486, BODY - 0.01, 48, 1, true),
+  new THREE.MeshStandardMaterial({ color: 0x14121a, metalness: 0.2, roughness: 0.9, side: THREE.DoubleSide }));
+spin.add(core);
+
+var f = F[i];
+var mat = new THREE.MeshPhysicalMaterial({
+  map: null, color: 0x222226, metalness: 0.35, roughness: 0.5,
+  clearcoat: 0.45, clearcoatRoughness: 0.3
+});
+var label = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, BODY, 96, 1, true), mat);
+spin.add(label);
+
+var n = 0;
+function render() {
+  renderer.render(scene, camera);
+  if (++n >= 4) window.__READY = true;
+  else requestAnimationFrame(render);
+}
+
+var im = new Image();
+im.onload = function () {
+  var tex = new THREE.Texture(im);
+  if ('colorSpace' in tex && THREE.SRGBColorSpace) tex.colorSpace = THREE.SRGBColorSpace;
+  else tex.encoding = THREE.sRGBEncoding;
+  tex.wrapS = THREE.RepeatWrapping;
+  tex.offset.x = f.faceU;
+  tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+  tex.needsUpdate = true;
+  mat.map = tex; mat.color.set(0xffffff); mat.needsUpdate = true;
+  render();
+};
+im.onerror = function () { window.__READY = 'error'; };
+im.src = (window.SEPELA_TEX && window.SEPELA_TEX[f.label]) || f.label;
+setTimeout(function () { if (window.__READY !== true && window.__READY !== 'error') render(); }, 5000);
+})();
+</script>
+</body>
+</html>
